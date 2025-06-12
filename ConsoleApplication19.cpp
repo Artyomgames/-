@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 const int MAX_LENGTH_NAME = 50;
 const int MAX_LENGTH_GROUP = 10;
@@ -87,5 +88,18 @@ void clearScreen() {
 
 
 int main() {
-    
+    setlocale(LC_ALL, "ru");
+    ofstream file ("journal.txt");
+    if (file.is_open()) {
+        string l, p;
+        cout << "Логин: ";
+        file << "Логин: ";
+        cin >> l;
+        file << l << endl;
+        cout << "Пароль: ";
+        file << "Пароль: ";
+        cin >> p;
+        file << p << endl;
+        file.close();
+    }
 }
