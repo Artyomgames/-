@@ -12,7 +12,6 @@ struct Student {
     char group[MAX_LENGTH_GROUP];
     int year;
     int grades[MAX_GRADES];
-    int numGrades;
 };
 
 
@@ -21,10 +20,6 @@ void initStudent(Student & student) {
     student.name[0] = '\0';
     student.group[0] = '\0';
     student.year = 0;
-    student.numGrades = 0;
-    for (int i = 0; i < MAX_GRADES; ++i) {
-        student.grades[i] = 0;
-    }
 }
 
 
