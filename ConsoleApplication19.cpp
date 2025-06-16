@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 const int MAX_LENGTH_NAME = 50;
 const int MAX_LENGTH_GROUP = 10;
@@ -15,23 +16,23 @@ struct Student {
 };
 
 
-void initStudent(Student & student) {
+void initStudent(Student& student) {
     student.id = 0;
     student.name[0] = '\0';
     student.group[0] = '\0';
     student.year = 0;
+    for (int i = 0; i < MAX_GRADES; ++i) {
+        student.grades[i] = 0;
+    }
 }
 
 
-void printStudent(const Student & student) {
+void printStudent(const Student& student) {
     cout << "ID: " << student.id << endl;
     cout << "FCs: " << student.name << endl;
     cout << "Group: " << student.group << endl;
     cout << "Year of admission: " << student.year << endl;
     cout << "Evaluations: ";
-    for (int i = 0; i < student.numGrades; ++i) {
-        cout << student.grades[i] << " ";
-    }
     cout << endl;
 }
 
@@ -84,17 +85,30 @@ void clearScreen() {
 
 int main() {
     setlocale(LC_ALL, "ru");
-    ofstream file ("journal.txt");
-    if (file.is_open()) {
-        string l, p;
-        cout << "Логин: ";
-        file << "Логин: ";
-        cin >> l;
-        file << l << endl;
-        cout << "Пароль: ";
-        file << "Пароль: ";
-        cin >> p;
-        file << p << endl;
-        file.close();
+    string l, p, f;
+    cout << "Логин: ";
+    cin >> l;
+    cout << endl << "Пароль: ";
+    cin >> p;
+    f = l + p;
+    cout << "Добро пожаловать в систему." << endl;
+    
+    
+    int choice = 0;
+    cout << "Выберите операцию : " << endl << "1. Просмотр таблицы" << endl << "2. Добавить студента" << "3. Удалить студента" << endl << "4. Поиск студента" << endl << "5. Экспорт данных" << endl << "6. Импорт данных" << "7. Вывход" << endl;
+    cin >> choice;
+
+
+    if (choice == 7) {
+        return 0;
+    }
+    else if (choice == 1) {
+        ifstream file(f);
+        if (file.is_open()) {
+            string d;
+            while (getline(file, d)) {
+                cout << d;
+            }
+        }
     }
 }
