@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 using namespace std;
+
+
 const int MAX_LENGTH_NAME = 50;
 const int MAX_LENGTH_GROUP = 10;
 const int MAX_GRADES = 10;
@@ -32,83 +34,67 @@ void printStudent(const Student& student) {
     cout << "FCs: " << student.name << endl;
     cout << "Group: " << student.group << endl;
     cout << "Year of admission: " << student.year << endl;
-    cout << "Evaluations: ";
-    cout << endl;
-}
-
-
-const int MAX_STUDENTS = 100;
-Student students[MAX_STUDENTS];
-int numStudents = 0;
-
-
-int stringLength(const char* str) {
-    int len = 0;
-    while (str[len] != '\0') {
-        len++;
-    }
-    return len;
-}
-
-
-void stringCopy(char* dest, const char* src) {
-    int i = 0;
-    while (src[i] != '\0') {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';
-}
-
-
-int stringCompare(const char* str1, const char* str2) {
-    int i = 0;
-    while (str1[i] != '\0' && str2[i] != '\0') {
-        if (str1[i] < str2[i]) return -1;
-        if (str1[i] > str2[i]) return 1;
-        i++;
-    }
-    if (str1[i] == '\0' && str2[i] == '\0') return 0;
-    if (str1[i] == '\0') return -1;
-    return 1;
-}
-
-
-void clearScreen() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    cout << "Evaluations: " << endl;                          
 }
 
 
 int main() {
     setlocale(LC_ALL, "ru");
-    string l, p, f;
-    cout << "Логин: ";
-    cin >> l;
-    cout << endl << "Пароль: ";
-    cin >> p;
-    f = l + p;
-    cout << "Добро пожаловать в систему." << endl;
+
     
+    string login, password, filename;
+    cout << "Логин: ";
+    cin >> login;
+    cout << endl << "Пароль: ";
+    cin >> password;
+    filename = login + password + ".txt";
+    cout << "Добро пожаловать в систему. " << filename << endl;
+
     
     int choice = 0;
-    cout << "Выберите операцию : " << endl << "1. Просмотр таблицы" << endl << "2. Добавить студента" << "3. Удалить студента" << endl << "4. Поиск студента" << endl << "5. Экспорт данных" << endl << "6. Импорт данных" << "7. Вывход" << endl;
+    cout << "Выберите операцию:" << endl
+        << "1. Просмотр таблицы" << endl
+        << "2. Добавить студента" << endl
+        << "3. Удалить студента" << endl
+        << "4. Поиск студента" << endl
+        << "5. Экспорт данных" << endl
+        << "6. Импорт данных" << endl
+        << "7. Выход" << endl
+        << "Внимание, работайте с английским языком";
     cin >> choice;
 
-
-    if (choice == 7) {
-        return 0;
-    }
-    else if (choice == 1) {
-        ifstream file(f);
+    
+    if (choice == 1) {
+        ifstream file(filename);
         if (file.is_open()) {
-            string d;
-            while (getline(file, d)) {
-                cout << d;
+            string line;
+            while (getline(file, line)) {
+                cout << line << endl;
             }
+            file.close();
+        }
+        else {
+            cout << "Не удалось открыть файл." << endl;
         }
     }
+    else if (choice == 2) { 
+        ofstream file(filename, ios::app); 
+        if (file.is_open()) {
+            string studentData;
+            cout << "Введите данные студента: ";
+            cin.ignore();                      
+            getline(cin, studentData);        
+            file << studentData << endl;       
+            file.close();                      
+            cout << "Студент добавлен." << endl;
+        }
+        else {
+            cout << "Не удалось открыть файл для записи." << endl;
+        }
+    }
+    else {
+        cout << "Функционал в разработке." << endl;
+    }
+
+    return 0;
 }
