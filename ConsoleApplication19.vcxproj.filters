@@ -18,18 +18,12 @@
     <ClCompile Include="ConsoleApplication19.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="menu.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="table.cpp">
+    <ClCompile Include="Work.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="menu.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="table.h">
+    <ClInclude Include="Work.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
