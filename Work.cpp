@@ -72,15 +72,14 @@ int Work(string filename)
     }
     
     else if (choice == 4) {
-        ifstream file("file.txt");
+        ifstream file(filename);
 if (file.is_open()) {
     string word, vvod;
-    int line = 0;
     cout << "Введите студента, которого хотите найти: ";
     cin >> vvod;
     while (file >> word) {
         if (word == vvod) {
-            cout << "Result: " << word << endl << "String: " << line;
+            cout << "Результаты поиска: " << word << endl;
             break;
         }
         else {
@@ -88,5 +87,5 @@ if (file.is_open()) {
         }
     }
 }
+        return 0;
     }
-}
