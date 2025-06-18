@@ -3,15 +3,15 @@
 int Work(string filename)
 {
     int choice = 0;
-    cout << "Âûáåðèòå îïåðàöèþ:" << endl
-        << "1. Ïðîñìîòð òàáëèöû" << endl
-        << "2. Äîáàâèòü ñòóäåíòà" << endl
-        << "3. Óäàëèòü ñòóäåíòà" << endl
-        << "4. Ïîèñê ñòóäåíòà" << endl
-        << "5. Ýêñïîðò äàííûõ" << endl
-        << "6. Èìïîðò äàííûõ" << endl
-        << "7. Âûõîä" << endl
-        << "Âíèìàíèå, ðàáîòàéòå ñ àíãëèéñêèì ÿçûêîì!!!" << endl;
+    cout << "Ã‚Ã»Ã¡Ã¥Ã°Ã¨Ã²Ã¥ Ã®Ã¯Ã¥Ã°Ã Ã¶Ã¨Ã¾:" << endl
+        << "1. ÃÃ°Ã®Ã±Ã¬Ã®Ã²Ã° Ã²Ã Ã¡Ã«Ã¨Ã¶Ã»" << endl
+        << "2. Ã„Ã®Ã¡Ã Ã¢Ã¨Ã²Ã¼ Ã±Ã²Ã³Ã¤Ã¥Ã­Ã²Ã " << endl
+        << "3. Ã“Ã¤Ã Ã«Ã¨Ã²Ã¼ Ã±Ã²Ã³Ã¤Ã¥Ã­Ã²Ã " << endl
+        << "4. ÃÃ®Ã¨Ã±Ãª Ã±Ã²Ã³Ã¤Ã¥Ã­Ã²Ã " << endl
+        << "5. ÃÃªÃ±Ã¯Ã®Ã°Ã² Ã¤Ã Ã­Ã­Ã»Ãµ" << endl
+        << "6. ÃˆÃ¬Ã¯Ã®Ã°Ã² Ã¤Ã Ã­Ã­Ã»Ãµ" << endl
+        << "7. Ã‚Ã»ÃµÃ®Ã¤" << endl
+        << "Ã‚Ã­Ã¨Ã¬Ã Ã­Ã¨Ã¥, Ã°Ã Ã¡Ã®Ã²Ã Ã©Ã²Ã¥ Ã± Ã Ã­Ã£Ã«Ã¨Ã©Ã±ÃªÃ¨Ã¬ Ã¿Ã§Ã»ÃªÃ®Ã¬!!!" << endl;
     cin >> choice;
 
 
@@ -27,18 +27,18 @@ int Work(string filename)
     }
     else if (choice == 2) {
         while (choice == 2) {
-            cout << "1. Âûéòè" << endl << "2. Äîáàâèòü";
+            cout << "1. Ã‚Ã»Ã©Ã²Ã¨" << endl << "2. Ã„Ã®Ã¡Ã Ã¢Ã¨Ã²Ã¼";
             cin >> choice;
             if (choice == 2) {
                 ofstream file(filename, ios::app);
                 if (file.is_open()) {
                     string studentData;
-                    cout << "Ââåäèòå äàííûå ñòóäåíòà: ";
+                    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¤Ã Ã­Ã­Ã»Ã¥ Ã±Ã²Ã³Ã¤Ã¥Ã­Ã²Ã : ";
                     cin.ignore();
                     getline(cin, studentData);
                     file << studentData << endl;
                     file.close();
-                    cout << "Ñòóäåíò äîáàâëåí." << endl;
+                    cout << "Ã‘Ã²Ã³Ã¤Ã¥Ã­Ã² Ã¤Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­." << endl;
                 }
             }
             else {
@@ -49,7 +49,7 @@ int Work(string filename)
     else if (choice == 3) {
         ifstream file(filename, ios::app);
         if (file.is_open()) {
-            cout << "Ââåäèòå íîìåð ñòðîêè äëÿ óäàëåíèÿ: " << endl;
+            cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã®Ã¬Ã¥Ã° Ã±Ã²Ã°Ã®ÃªÃ¨ Ã¤Ã«Ã¿ Ã³Ã¤Ã Ã«Ã¥Ã­Ã¨Ã¿: " << endl;
             int i_number_line_delete = 0;
             cin >> i_number_line_delete;
             int i_number_line_now = 0;
@@ -68,6 +68,25 @@ int Work(string filename)
             }
             file.close();
         }
+        return 0;
     }
-    return 0;
+    
+    else if (choice == 4) {
+        ifstream file("file.txt");
+if (file.is_open()) {
+    string word, vvod;
+    int line = 0;
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð°, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð½Ð°Ð¹Ñ‚Ð¸: ";
+    cin >> vvod;
+    while (file >> word) {
+        if (word == vvod) {
+            cout << "Result: " << word << endl << "String: " << line;
+            break;
+        }
+        else {
+            continue;
+        }
+    }
+}
+    }
 }
